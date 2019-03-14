@@ -9,11 +9,12 @@
                 <ListView Margin="30" x:Name="employeeList">
                     
                 </ListView>
-          <Image x:Name="employeeImage" />
+            <Image x:Name="employeeImage"  WidthRequest="100" HeightRequest="100" />
           <Button Text="List Work Assignments" Clicked="ListWorkAssignments"></Button>
-          <Button Text="Ottaa Foto" Clicked="OttaaFoto" FontSize="20" />
-            <Image x:Name="MinhaImagem" />
-            
+            <Button x:Name="takePictureButton" Text="Take Picture" Clicked="TakeFoto" FontSize="20" />
+
+            <Image x:Name="FotoImage" WidthRequest="100" HeightRequest="100" />
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

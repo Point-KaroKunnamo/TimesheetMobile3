@@ -18,19 +18,25 @@ using Plugin.Media;
 
 namespace TimesheetMobile3.Droid
 {
-   
+    public static class ImageInfo
+    {
+        public static Java.IO.File _file;
+        public static Java.IO.File _dir;
+        public static Android.Graphics.Bitmap bitmap;
+    }
     [Activity(Label = "TimesheetMobile", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, ILocationListener
     {
         public static Android.Locations.LocationManager LocationManager;
         public static MainActivity AndroidMainActivity;
-     
-      
+
+        // kuvan ottamisen jälkeen suoritettava metodi eli Action
+        private Action pictureTaken;
         protected override async void OnCreate(Bundle bundle)
         {
             // lisätty
-            //StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-            //StrictMode.SetVmPolicy(builder.Build());
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.SetVmPolicy(builder.Build());
             //TabLayoutResource = Resource.Layout.Tabbar;
             //ToolbarResource = Resource.Layout.Toolbar;
 
@@ -94,6 +100,24 @@ namespace TimesheetMobile3.Droid
         }
         #endregion
 
+        //#region Kuvan ottaminen
+        ////Kutsutaan kun nappia painetaan
+        //public void TakeAPicture(Action pictureTaken)
+        //{
+        //    //Intent tyyppiä käytetään käynnistämään androidissa muita sovelluksia
+        //    Intent intent = new Intent(MediaStore.ActionImageCapture);
+        //    //määritellään tiedosto, johon kuva tallennetaan
+        //    ImageInfo._file = new Java.IO.File(ImageInfo._dir, String.Format("myPhoto_{0}.jpg", Guid.NewGuid()));
+        //    //kerrotaan intentille mihin tiedostoon kuva tallennetaan
+        //    intent.PutExtra(MediaStore.ExtraOutput,
+        //        Android.Net.Uri.FromFile(ImageInfo._file));
 
+        //    // tallennetaan annettu tapahtuma/action
+        //    this.pictureTaken = pictureTaken;
+
+        //    //käynnistetään määritelty intent
+        //    StartActivityForResult(intent, 0);
+        //}
+        //#endregion
     }
 }

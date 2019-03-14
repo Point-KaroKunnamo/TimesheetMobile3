@@ -39,7 +39,7 @@ namespace TimesheetMobile3
             try
             {
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://k2-timesheetmobile.azurewebsites.net");
+                client.BaseAddress = new Uri("http://k2mobilebackend.azurewebsites.net");
                 string json = await client.GetStringAsync("/api/Workassignment");
                 string[] assignments = JsonConvert.DeserializeObject<string[]>(json);
 
@@ -73,7 +73,7 @@ namespace TimesheetMobile3
                     };
                     HttpClient client = new HttpClient();
                  
-                    client.BaseAddress = new Uri("http://k2-timesheetmobile.azurewebsites.net");
+                    client.BaseAddress = new Uri("http://k2mobilebackend.azurewebsites.net");
                     
                     string input = JsonConvert.SerializeObject(data);
                     StringContent content = new StringContent(input, Encoding.UTF8, "application/json");
@@ -120,11 +120,14 @@ namespace TimesheetMobile3
                         AssignmentTitle = assignmentName
                     };
                     HttpClient client = new HttpClient();
-                    client.BaseAddress = new Uri("https://k2-timesheetmobile.azurewebsites.net");
+
+                    client.BaseAddress = new Uri("https://k2mobilebackend.azurewebsites.net");
+
                     string input = JsonConvert.SerializeObject(data);
                     StringContent content = new StringContent(input, Encoding.UTF8, "application/json");
 
                     HttpResponseMessage message = await client.PostAsync("/api/workassignment", content);
+
                     string reply = await message.Content.ReadAsStringAsync();
                     bool success = JsonConvert.DeserializeObject<bool>(reply);
                     if (success)
